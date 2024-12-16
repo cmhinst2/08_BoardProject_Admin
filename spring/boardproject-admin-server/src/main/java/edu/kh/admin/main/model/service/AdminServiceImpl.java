@@ -59,5 +59,30 @@ public class AdminServiceImpl implements AdminService {
 	public int restoreBoard(int boardNo) {
 		return mapper.restoreBoard(boardNo);
 	}
+	
+	// 새로운 회원 조회
+	@Override
+	public List<Member> getNewMember() {
+		return mapper.getNewMember();
+	}
+	
+	// 최대 조회수 게시글
+	@Override
+	public Board maxReadCount() {
+		return mapper.maxReadCount();
+	}
+	
+
+	// 게시글 최대 좋아요 수
+	@Override
+	public Board maxLikeCount() {
+		return mapper.maxLikeCount();
+	}
+	
+	// 게시글 최대 댓글 수
+	@Override
+	public Board maxCommentCount() {
+		return mapper.maxCommentCount();
+	}
 
 }

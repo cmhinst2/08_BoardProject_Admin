@@ -2,7 +2,7 @@ package edu.kh.admin.main.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -172,6 +172,59 @@ public class AdminController {
 		}
 
 	}
+	
+	// 새로운 가입 회원 조회
+	@GetMapping("newMember")
+	public ResponseEntity<List<Member>> getNewMember() {
+		try {
+			
+			List<Member> newMemberList = service.getNewMember();
+			return ResponseEntity.status(HttpStatus.OK).body(newMemberList);
+			
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+	}
+	
+	// 최대 조회수 게시글 조회
+	@GetMapping("maxReadCount")
+	public ResponseEntity<Object> maxReadCount() {
+		try {
+			Board board = service.maxReadCount();
+			return ResponseEntity.status(HttpStatus.OK).body(board);
+			
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+	}
+	
+	
+	
+	// 최대 좋아요 게시글 조회
+	@GetMapping("maxLikeCount")
+	public ResponseEntity<Object> maxLikeCount() {
+
+		try {
+			Board board = service.maxLikeCount();
+			return ResponseEntity.status(HttpStatus.OK).body(board);
+			
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+	}
+
+	// 최대 댓글수 게시글 조회
+	@GetMapping("maxCommentCount")
+	public ResponseEntity<Object> maxCommentCount() {
+		try {
+			Board board = service.maxCommentCount();
+			return ResponseEntity.status(HttpStatus.OK).body(board);
+			
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+	}
+
 
 	
 	
