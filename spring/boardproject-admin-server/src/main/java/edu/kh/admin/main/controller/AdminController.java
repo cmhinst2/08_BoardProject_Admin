@@ -226,6 +226,52 @@ public class AdminController {
 	}
 
 
+	/** 관리자 계정 목록 조회
+	 * @return
+	 */
+	@GetMapping("adminAccountList")
+	public ResponseEntity<Object> adminAccountList() {
+		try {
+			List<Member> adminList = service.adminAccountList();
+			return ResponseEntity.status(HttpStatus.OK).body(adminList);
+			
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
+	}
+	
+	/** 관리자 계정 발급
+	 * @return
+	 */
+	@PostMapping("createAdminAccount")
+	public ResponseEntity<String> createAdminAccount(@RequestBody Member member) {
+		try {
+			
+			String accountPw = service.createAdminAccount(member);
+			
+			if(accountPw != null) {
+				// 201(자원이 성공적으로 생성되었음을 나타냄)
+				return ResponseEntity.status(HttpStatus.CREATED).body(accountPw);
+			} else {
+				// 204 (콘텐츠 없음)
+				return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+			}
+			
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR) // 500
+					.body(null);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

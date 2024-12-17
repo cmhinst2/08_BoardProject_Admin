@@ -58,4 +58,18 @@ public interface AdminMapper {
 	 * @return
 	 */
 	Board maxCommentCount();
+
+	/** 관리자 계정 목록 조회
+	 * @return
+	 */
+	List<Member> adminAccountList();
+
+	/** 관리자 계정 발급
+	 * @param member
+	 * @return
+	 */
+	int createAdminAccount(Member member);
+	
+	
+	
 }

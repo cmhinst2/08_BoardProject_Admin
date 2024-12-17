@@ -55,5 +55,16 @@ public interface AdminService {
 	 */
 	Board maxCommentCount();
 
+	/** 관리자 계정 목록 조회
+	 * @return
+	 */
+	List<Member> adminAccountList();
+
+	/** 관리자 계정 발급
+	 * @param member
+	 * @return
+	 */
+	String createAdminAccount(Member member);
+
 
 }
